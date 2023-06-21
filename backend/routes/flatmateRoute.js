@@ -1,12 +1,15 @@
 const express = require("express");
 
-const {getAllFlats,createItem,flatDetails,updateDetails,deleteItem} = require("../controllers/flatmateController");
+const {getAllFlatmates,createItem,flatmateDetails,updateDetails,deleteItem, createFlatmateReview, getAllFlatmateReviews, deleteFlatmateReview} = require("../controllers/flatmateController");
+const { isAuthenticatedUser,authorizeRoles } = require("../middleware/auth");
+
 
 const router = express.Router();
 
-router.route("/flatmates").get(getAllFlats);
-router.route("/flatmates/new").post(createItem);
-router.route("/flatmates/:id").get(flatDetails).put(updateDetails).delete(deleteItem);
-
+router.route("/flatmates").get(getAllFlatmates);
+router.route("/flatmates/new").post(isAuthenticatedUser,authorizeRoles("admin"),createItem);
+router.route("/flatmates/:id").get(flatmateDetails).put(isAuthenticatedUser,authorizeRoles("admin"),updateDetails).delete(isAuthenticatedUser,authorizeRoles("admin"),deleteItem);
+router.route("/flatmate/review").put(isAuthenticatedUser,createFlatmateReview);
+router.route("/flatmate/reviews").get(getAllFlatmateReviews).delete(deleteFlatmateReview);
 
 module.exports = router;
