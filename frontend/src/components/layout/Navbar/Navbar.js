@@ -1,28 +1,29 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <div>
          <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container" >
-                <a className="navbar-brand" href="#">FlatHunt</a>
+                <Link className="navbar-brand" to="/">FlatHunt</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" style={{ marginRight: '20 px' }}></span>
+                    <span className="navbar-toggler-icon" style={{ marginRight: '10 px' }}></span>
                 </button>
                 {/* menu start */}
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Search Flats</a>
+                            <Link className="nav-link" to="#">Search Flats</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Search Flats</a>
+                            <Link className="nav-link" to="#">Search Flats</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Search FlatMates</a>
+                            <Link className="nav-link" to="#">Search FlatMates</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">List Property</a>
+                            <Link className="nav-link" to="#">List Property</Link>
                         </li>
                         <div>
                             <button type="button" className="btn btn-secondary mx-5">Sign Up</button>
