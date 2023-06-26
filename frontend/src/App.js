@@ -11,9 +11,9 @@ import FlatmateHome from "./components/Home/FlatmateHome.js";
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navbar/>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/flats" element={<FlatHome />}></Route>
         <Route path="/flatmates" element={<FlatmateHome />}></Route>
       </Routes>

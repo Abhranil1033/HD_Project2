@@ -3,11 +3,46 @@
     flex-direction: column;
     text-align: center;
 }
-
+.top{
+    font-family: Arial, Helvetica, sans-serif;
+}
 .bottom-half{
     display: flex;
     flex-direction: row;
     text-align: center;
     justify-content: center;
     justify-content: space-evenly;
+}
+.flatsbutton{
+    color:black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.flats{
+    font-size: 24px;
+    padding: 75px 100px;
+    border-radius:20px;
+    background-color: #73C2FB;
+    transition-duration: 0.4s;
+}
+.flats:hover{
+    background-color:#B0E0E6;
+    color:#B0E0E6;
+}
+.flatmatesbutton{
+    color:black;
+    text-decoration:none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.flatmates{
+    font-size: 24px;
+    padding: 75px 75px;
+    border-radius: 20px;
+    background-color: #73C2FB;
+    color: black;
+    transition-duration: 0.4s;
+}
+.flatmates:hover{
+    background-color:#B0E0E6;
+    color:#B0E0E6;
 }
