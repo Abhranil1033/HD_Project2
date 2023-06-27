@@ -27,7 +27,7 @@ const Navbar = () => {
                             <Link className="nav-link" to="#">List Property</Link>
                         </li>
                         <div>
-                            <button type="button" className="btn btn-secondary mx-5">Sign Up</button>
+                            <Link to="/login" className="btn btn-secondary mx-5">Sign Up</Link>
                         </div>
                         <div className="form-check form-switch ms-5">
                             <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
