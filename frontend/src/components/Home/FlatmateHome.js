@@ -1,33 +1,32 @@
 import React from 'react';
 import "./FlatmateHome.css"
 import { useState } from 'react';
-
 const FlatmateHome = () => {
   const [cards]=useState([
     {
       title:'Person-1',
-      text:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Excepturi, quod dolorum vel non tempore nulla nisi rem, aperiam inipsam atque molestiae nam maiores ullam unde facilis, cumque optiodeleniti?'
+      image:"./user&flat/user.png"
     },
     {
       title:'Person-2',
-      text:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Excepturi, quod dolorum vel non tempore nulla nisi rem, aperiam inipsam atque molestiae nam maiores ullam unde facilis, cumque optiodeleniti?'
+      image:"./user&flat/user.png"
     },
     {
       title:'Person-3',
-      text:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Excepturi, quod dolorum vel non tempore nulla nisi rem, aperiam inipsam atque molestiae nam maiores ullam unde facilis, cumque optiodeleniti?'
+      image:"./user&flat/user.png"
     },
     {
       title:'Person-4',
-      text:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Excepturi, quod dolorum vel non tempore nulla nisi rem, aperiam inipsam atque molestiae nam maiores ullam unde facilis, cumque optiodeleniti?'
+      image:"./user&flat/user.png"
     },
     {
       title:'Person-5',
-      text:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Excepturi, quod dolorum vel non tempore nulla nisi rem, aperiam inipsam atque molestiae nam maiores ullam unde facilis, cumque optiodeleniti?'
+      image:"./user&flat/user.png"
     },
     {
       title:'Person-6',
-      text:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Excepturi, quod dolorum vel non tempore nulla nisi rem, aperiam inipsam atque molestiae nam maiores ullam unde facilis, cumque optiodeleniti?'
-    }
+      image:"./user&flat/user.png"
+    },
   ])
   return (
     <div>
@@ -38,7 +37,7 @@ const FlatmateHome = () => {
               cards.map((cards,i)=>(
                   <div key={i} className="card">
                     <h3>{cards.title}</h3>
-                    <p>{cards.text}</p>
+                    <img src={cards.image} alt="images"/>
                     <button className="but">View</button>
                   </div> 
               ))
