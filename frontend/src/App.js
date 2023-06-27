@@ -17,7 +17,7 @@ function App() {
         <Route path="/flats" element={<FlatHome />}></Route>
         <Route path="/flatmates" element={<FlatmateHome />}></Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }
