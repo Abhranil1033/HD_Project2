@@ -1,0 +1,5 @@
+export const ALL_FLAT_REQUEST = "ALL_FLAT_REQUEST";
+export const ALL_FLAT_SUCCESS = "ALL_FLAT_SUCCESS";
+export const ALL_FLAT_FAILED = "ALL_FLAT_FAILED";
+
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

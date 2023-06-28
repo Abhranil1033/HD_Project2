@@ -29,16 +29,16 @@ const FlatmateHome = () => {
     },
   ])
   return (
-    <div>
+    <div className='flatmatePage'>
       <section>
-        <div className="container">
+        <div className="flatmate-container">
           <div className="cards">
             {
               cards.map((cards,i)=>(
                   <div key={i} className="card">
                     <h3>{cards.title}</h3>
                     <img src={cards.image} alt="images"/>
-                    <button className="but">View</button>
+                    <button className="flatmate-button">View</button>
                   </div> 
               ))
             }

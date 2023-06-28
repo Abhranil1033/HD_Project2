@@ -6,7 +6,8 @@ import Footer from "./components/layout/Footer/Footer.js"
 import FlatHome from "./components/Home/FlatHome.js";
 import FlatmateHome from "./components/Home/FlatmateHome.js";
 import LoginSignUp from "./components/User/LoginSignUp.js"
-
+import FlatDetails from "./components/Flats/FlatDetails.js";
+import FlatmateDetails from "./components/Flatmates/FlatmateDetails.js";
 
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/flats" element={<FlatHome />}></Route>
+        <Route path="/flats/:id" element={<FlatDetails />}></Route>
         <Route path="/flatmates" element={<FlatmateHome />}></Route>
+        <Route path="/flatmates/:id" element={<FlatmateDetails />}></Route>
         <Route path="/login" element={<LoginSignUp />}></Route>
 
       </Routes>

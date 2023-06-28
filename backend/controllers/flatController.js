@@ -21,7 +21,7 @@ exports.createItem = catchAsyncErrors(
 // Get all flats (Home Page)
 exports.getAllFlats = catchAsyncErrors(
     async (req, res) => {
-        const itemsInAPage = 8;
+        const itemsInAPage = 6;
         const totalFlats = await Flat.countDocuments();
     
         // const flats = await Flat.find();

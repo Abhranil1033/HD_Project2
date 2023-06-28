@@ -1,52 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./FlatHome.css"
 import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { getFlats } from '../../actions/flatActions';
+import { Link } from 'react-router-dom';
 
 const FlatHome = () => {
-  const [cards]=useState([
-    {
-      title:'Flat-1',
-      image:"./user&flat/flat.jpg"
-    },
-    {
-      title:'Flat-2',
-      image:"./user&flat/flat.jpg"
-    },
-    {
-      title:'Flat-3',
-      image:"./user&flat/flat.jpg"
-    },
-    {
-      title:'Flat-4',
-      image:"./user&flat/flat.jpg"
-    },
-    {
-      title:'Flat-5',
-      image:"./user&flat/flat.jpg"
-    },
-    {
-      title:'Flat-6',
-      image:"./user&flat/flat.jpg"
-    }
-  ])
+
+  const dispatch = useDispatch();
+  const {loading,error,flats,totalFlats} = useSelector((state) => state.flats)
+
+  useEffect(() => {
+    dispatch(getFlats());
+  },[dispatch]);
+
   return (
-  <div>
-    <section>
-      <div className="container">
-        <div className="cards">
-          {
-            cards.map((cards,i)=>(
+    <div className='flatPage'>
+      <section className='flatSection'>
+        <div className="flat-container">
+          <div className="cards">
+            { flats && 
+              flats.map((flat, i) => (
                 <div key={i} className="card">
-                  <h3>{cards.title}</h3>
-                  <img src={cards.image} alt="flat"/>
-                  <button className="but">View</button>
-                </div> 
-            ))
-          }
+                  <h3>{flat.city}</h3>
+                  <img src={flat.images[0].url} alt="flat" />
+                  <Link className="flat-button" to={flat._id}>View</Link>
+                </div>
+              ))
+            }
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
   )
 }
 
