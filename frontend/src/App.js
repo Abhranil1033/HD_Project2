@@ -5,6 +5,7 @@ import Home from "./components/Home/Home.js";
 import Footer from "./components/layout/Footer/Footer.js"
 import FlatHome from "./components/Home/FlatHome.js";
 import FlatmateHome from "./components/Home/FlatmateHome.js";
+import LoginSignUp from "./components/User/LoginSignUp.js"
 
 
 
@@ -16,6 +17,8 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/flats" element={<FlatHome />}></Route>
         <Route path="/flatmates" element={<FlatmateHome />}></Route>
+        <Route path="/login" element={<LoginSignUp />}></Route>
+
       </Routes>
       <Footer />
     </Router>
