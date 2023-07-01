@@ -18,9 +18,11 @@ section{
 .cards{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-
+.cards .centered {
+    justify-content: center;
+  }
 .card{
     flex: 0 0 calc(33.33% - 20px);
     max-width:calc(33.33% - 20px);
@@ -34,6 +36,10 @@ section{
 }
 .card:hover{
     border-color:aqua;
+}
+.special{
+    display:flex;
+    justify-content:flex-start;
 }
 .flatmate-button{
     border:none;

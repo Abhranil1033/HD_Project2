@@ -18,9 +18,6 @@ const Navbar = () => {
                             <Link className="nav-link" to="#">Search Flats</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">Search Flats</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link className="nav-link" to="#">Search FlatMates</Link>
                         </li>
                         <li className="nav-item">
