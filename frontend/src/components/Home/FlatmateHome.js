@@ -67,8 +67,8 @@ const FlatmateHome = () => {
                     <h3>{cards.title}</h3>
                     <div className="special">
                     <h6>{cards.occupation}</h6>|
-                    <h6 className="h63">{cards.gender}</h6>|
-                    <h6 className="h62 ">{cards.age}</h6>
+                    <h6>{cards.gender}</h6>|
+                    <h6>{cards.age}</h6>
                     </div>
                     <button className="flatmate-button">Find out more</button>
                   </div> 

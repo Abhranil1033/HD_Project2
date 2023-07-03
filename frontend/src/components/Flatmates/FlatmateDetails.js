@@ -6,11 +6,18 @@ const FlatmateDetails = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  const [flatmatedet]=useState([
+    {
+      name:"Person-1",
+      gender:"Male",
+      age:23,
+      occupation:""
+    }])
   return (
     <div className="container flatmate-pro">
       <form method="">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-6">
             <img src="../user&flat/user.png" alt="images" style={{ height: "350px" }} />
           </div>
           <div className="col-md-6">
@@ -23,8 +30,8 @@ const FlatmateDetails = () => {
               <br />
               <p>Brief Description:Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nemo corporis quidem esse magnam harum! Praesentium veritatis fuga doloribus sit optio, nemo ad a fugiat voluptatibus vel voluptates minus! Rem.</p>
               <div className="profile-button my-2">
-                <button type="button" className="btn btn-success">Send Chat</button>
-                <button type="button" className="btn btn-danger mx-3">Report User</button>
+                <button type="button" className="btn btn-success my-4">Send Chat</button>
+                <button type="button" className="btn btn-danger mx-4 my-4">Report User</button>
               </div>
               <ul className="nav nav-tabs my-3">
                 <li className="nav-item">
@@ -47,9 +54,10 @@ const FlatmateDetails = () => {
         </div>
         <div className="row">
           {/* left side url */}
-          <div className="col-md-4">
+          <div className="col-md-6">
             <div className="profile-work">
-              <p>Work Link</p>
+              <h5>Contact Me:</h5><br/>
+              <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">Email</a><br />
               <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">Facebook</a><br />
               <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">Instagram</a><br />
               <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">GitHub</a><br />
@@ -57,7 +65,7 @@ const FlatmateDetails = () => {
             </div>
           </div>
           {/* right side  */}
-          <div className="col-md-8 pl-5 about-info">
+          <div className="col-md-6 pl-5 about-info">
             <div className="tab-content profile-tab" id="myTabContent">
               <div className={`tab-pane fade ${activeTab === 'about' ? 'show active' : ''}`} id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div className="row">
