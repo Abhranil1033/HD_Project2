@@ -1,59 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./FlatmateHome.css"
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { getFlatmates } from '../../actions/flatmateActions';
+import { Link } from 'react-router-dom';
+
 const FlatmateHome = () => {
-  const [cards]=useState([
-    {
-      title:'Person-1',
-      image:"./user&flat/user.png",
-      age:20,
-      gender:"Female",
-      occupation:"Software Engineer"
-    },
-    {
-      title:'Person-2',
-      image:"./user&flat/user.png",
-      age:20,
-      gender:"Female",
-      occupation:"Software Engineer"
-    },
-    {
-      title:'Person-3',
-      image:"./user&flat/user.png",
-      age:20,
-      gender:"Female",
-      occupation:"Software Engineer"
-    },
-    {
-      title:'Person-4',
-      image:"./user&flat/user.png",
-      age:20,
-      gender:"Female",
-      occupation:"Software Engineer"
-    },
-    {
-      title:'Person-5',
-      image:"./user&flat/user.png",
-      age:20,
-      gender:"Female",
-      occupation:"Software Engineer"
-    },
-    {
-      title:'Person-6',
-      image:"./user&flat/user.png",
-      age:20,
-      gender:"Female",
-      occupation:"Software Engineer"
-    },
-  ])
+
+  const dispatch = useDispatch();
+  const {loading,error,flatmates,totalFlatmates} = useSelector((state) => state.flatmates)
+
   useEffect(() => {
-    const cardContainer = document.querySelector('.cards');
-    if (cards.length === 1) {
-      cardContainer.classList.add('centered');
-    } else {
-      cardContainer.classList.remove('centered');
-    }
-  }, [cards.length]);
+    dispatch(getFlatmates());
+  },[dispatch]);
 
   return (
     <div className='flatmatePage'>
@@ -61,17 +20,19 @@ const FlatmateHome = () => {
         <div className="flatmate-container">
           <div className="cards">
             {
-              cards.map((cards,i)=>(
-                  <div key={i} className="card">
-                    <img src={cards.image} alt="images"/>
-                    <h3>{cards.title}</h3>
-                    <div className="special">
-                    <h6>{cards.occupation}</h6>|
-                    <h6>{cards.gender}</h6>|
-                    <h6>{cards.age}</h6>
-                    </div>
-                    <button className="flatmate-button">Find out more</button>
-                  </div> 
+              flatmates.map((flatmate, i) => (
+                <div key={i} className="card">
+                  <img src={flatmate.images} alt="images" />
+                  <h3>{flatmate.name}</h3>
+                  <div className="special">
+                    <h6>{flatmate.proffession} | </h6>
+                    <h6>Gender | </h6>
+                    <h6> 22</h6>
+                    {/* <h6>{cards.gender}</h6>|
+                    <h6>{cards.age}</h6> */}
+                  </div>
+                  <Link to={flatmate._id} className="flatmate-button">Find out more</Link>
+                </div>
               ))
             }
           </div>
