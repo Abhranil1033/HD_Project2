@@ -63,6 +63,14 @@ section{
     background:transparent;
     color:#73C2FB;
 }
+
+.filterBox {
+    width: 10vmax;
+    position: absolute;
+    top: 10vmax;
+    left: 4vmax;
+  }
+
 @media(max-width:969px) {
     section{
         padding:20px 0px;
@@ -75,6 +83,11 @@ section{
         flex: 0 0 calc(50% - 20px);
         max-width: calc(50% - 20px);
     }
+    .filterBox {
+        width: 20vmax;
+        position: static;
+        margin: auto;
+      }
 }
 @media(max-width:600px) {
     .card{

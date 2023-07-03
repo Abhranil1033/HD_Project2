@@ -4,19 +4,55 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getFlatmates } from '../../actions/flatmateActions';
 import { Link } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import { Typography, Slider } from "@material-ui/core";
+
+const categories = ["X","Y","Z"];
 
 const FlatmateHome = () => {
 
   const dispatch = useDispatch();
-  const {loading,error,flatmates,totalFlatmates} = useSelector((state) => state.flatmates)
+  const { loading, error, flatmates, totalFlatmates, itemsInAPage } = useSelector((state) => state.flatmates)
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [category, setCategory] = useState("");
+
+  const setCurrentPageNumber = (event, value) => {
+    setCurrentPage(value);
+    console.log(currentPage);
+    // navigate(`?page=${currentPage}`);
+  }
+
+  const changeCategory = (event, value) => {
+    setCategory(value);
+    console.log(category);
+  }
+
+  const paginationVisible = flatmates.length > 0;
+
 
   useEffect(() => {
-    dispatch(getFlatmates());
-  },[dispatch]);
+    dispatch(getFlatmates(currentPage, category));
+  }, [dispatch, currentPage, category]);
 
   return (
     <div className='flatmatePage'>
       <section>
+        <div className="filterBox">
+
+          <Typography>Categories</Typography>
+          <ul className="categoryBox">
+            {categories.map((category) => (
+              <li className="category-link"
+                key={category}
+                onClick={changeCategory}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
+
+        </div>
         <div className="flatmate-container">
           <div className="cards">
             {
@@ -37,6 +73,16 @@ const FlatmateHome = () => {
             }
           </div>
         </div>
+        {paginationVisible && (
+          <Pagination
+            count={Math.ceil(totalFlatmates / itemsInAPage)}
+            size="large"
+            page={currentPage}
+            variant="outlined"
+            shape="rounded"
+            onChange={setCurrentPageNumber}
+          />
+        )}
       </section>
     </div>
   )
