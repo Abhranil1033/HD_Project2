@@ -58,7 +58,7 @@ const FlatmateHome = () => {
             {
               flatmates.map((flatmate, i) => (
                 <div key={i} className="card">
-                  <img src={flatmate.images} alt="images" />
+                  <img src={flatmate.images} alt="images" className="images"/>
                   <h3>{flatmate.name}</h3>
                   <div className="special">
                     <h6>{flatmate.proffession} | </h6>
