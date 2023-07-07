@@ -23,20 +23,29 @@ section{
 .cards .centered {
     justify-content: center;
   }
-.card{
+  .card {
     flex: 0 0 calc(33.33% - 20px);
-    max-width:calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
     width: 100%;
     background: #fff;
     border-radius: 10px;
     padding: 20px;
-    margin-bottom:20px;
-    transition:.3s;
-    border:2px solid transparent;
-}
-.card:hover{
-    border-color:aqua;
-}
+    margin-bottom: 20px;
+    transition: .3s;
+    border: 2px solid transparent;
+  }
+  
+  .card:hover {
+    border-color: aqua;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px; /* Adjust the height as per your requirement */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
 .special{
     display:flex;
     justify-content:flex-start;
@@ -64,11 +73,45 @@ section{
     color:#73C2FB;
 }
 
-.filterBox {
+/* .filterBox {
+    background-color: blueviolet;
     width: 10vmax;
     position: absolute;
     top: 10vmax;
-    left: 4vmax;
+    left: 2vmax;
+    z-index: 1000;
+  } */
+
+  .filterBox {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 10vmax;
+    left: 2vmax;
+    z-index: 1000;
+  }
+  
+  .filterBox .categoryBox {
+    margin-top: 10px;
+  }
+  
+  .filterBox .category-link {
+    cursor: pointer;
+  }
+  
+
+  .filterButton {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: aquamarine;
+    position: absolute;
+    top: 7vmax;
+    left: 2vmax;
+    z-index: 1000;
+  }
+  .filterButton :hover{
+    background :transparent;
   }
 
 @media(max-width:969px) {
@@ -85,6 +128,10 @@ section{
     }
     .filterBox {
         width: 20vmax;
+        position: static;
+        margin: auto;
+      }
+      .filterButton {
         position: static;
         margin: auto;
       }

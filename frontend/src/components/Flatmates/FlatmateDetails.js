@@ -1,31 +1,49 @@
-import React, { useState } from 'react';
-import "./FlatDetails.css"
+import React, { useState, useEffect } from 'react';
+import "./FlatmateDetails.css";
+import { useSelector,useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
+import { clearErrors,getFlatmateDetails } from '../../actions/flatmateActions';
+
 
 const FlatmateDetails = () => {
+  const { flatmate,loading,error } = useSelector((state) => state.flatmateDetails);
+  const params = useParams();
+  const dispatch = useDispatch();
+
   const [activeTab, setActiveTab] = useState('about');
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-  const [flatmatedet]=useState([
+
+  const [flatmatedet] = useState([
     {
-      name:"Person-1",
-      gender:"Male",
-      age:23,
-      occupation:""
-    }])
+      name: "Person-1",
+      gender: "Male",
+      age: 23,
+      occupation: ""
+    }]);
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getFlatmateDetails(params.id))
+  }, [dispatch, params.id ])
+
   return (
-    <div className="container flatmate-pro">
+    <div className="details-container container flatmate-pro">
       <form method="">
         <div className="row">
           <div className="col-md-6">
-            <img src="../user&flat/user.png" alt="images" style={{ height: "350px" }} />
+            {/* <img src={flatmateDetails.images} alt="images" style={{ height: "350px" }} /> */}
           </div>
           <div className="col-md-6">
             <div className="profile-head">
-              <h4>Name</h4>
+              <h4>{flatmate.name}</h4>
               <h5>Gender</h5>
               <h5>Age</h5>
-              <h6>Job Role</h6>
+              <h6>{flatmate.proffession}</h6>
               <br />
               <br />
               <p>Brief Description:Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nemo corporis quidem esse magnam harum! Praesentium veritatis fuga doloribus sit optio, nemo ad a fugiat voluptatibus vel voluptates minus! Rem.</p>
@@ -56,7 +74,7 @@ const FlatmateDetails = () => {
           {/* left side url */}
           <div className="col-md-6">
             <div className="profile-work">
-              <h5>Contact Me:</h5><br/>
+              <h5>Contact Me:</h5><br />
               <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">Email</a><br />
               <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">Facebook</a><br />
               <a href="https://www.youtube.com/watch?v=kHEhhV3EyPU" target="_dish">Instagram</a><br />

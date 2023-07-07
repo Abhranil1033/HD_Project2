@@ -19,11 +19,15 @@ const FlatHome = () => {
   const [rent, setRent] = useState([0, 125000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
+  const [isFilterBoxVisible, setFilterBoxVisible] = useState(false);
+
+  const toggleFilterBox = () => {
+    setFilterBoxVisible(!isFilterBoxVisible);
+  };
 
   const setCurrentPageNumber = (event, value) => {
     setCurrentPage(value);
     console.log(currentPage);
-    // navigate(`?page=${currentPage}`);
   }
 
   const rentHandler = (event, value) => {
@@ -49,7 +53,11 @@ const FlatHome = () => {
   return (
     <div className='flatPage'>
       <section className='flatSection'>
-        <div className="filterBox">
+      <button className='filterButton' onClick={toggleFilterBox}>Filters</button>
+
+        {
+          isFilterBoxVisible && 
+          <div className="filterBox">
           <Typography>Price</Typography>
           <Slider
             value={rent}
@@ -83,8 +91,9 @@ const FlatHome = () => {
               valueLabelDisplay="auto"
             />
           </fieldset>
-
         </div>
+        }
+
         <div className="flat-container">
           <div className="cards">
             {flats &&
@@ -108,6 +117,14 @@ const FlatHome = () => {
             onChange={setCurrentPageNumber}
           />
         )}
+        {/* <Pagination
+            count={Math.ceil(totalFlats / itemsInAPage)}
+            size="large"
+            page={currentPage}
+            variant="outlined"
+            shape="rounded"
+            onChange={setCurrentPageNumber}
+          /> */}
       </section>
     </div>
   )

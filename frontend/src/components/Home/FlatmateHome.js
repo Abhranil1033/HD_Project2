@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { Typography, Slider } from "@material-ui/core";
 
-const categories = ["X","Y","Z"];
+const categories = ["X", "Y", "Z"];
 
 const FlatmateHome = () => {
 
@@ -16,6 +16,11 @@ const FlatmateHome = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
+  const [isFilterBoxVisible, setFilterBoxVisible] = useState(false);
+
+  const toggleFilterBox = () => {
+    setFilterBoxVisible(!isFilterBoxVisible);
+  };
 
   const setCurrentPageNumber = (event, value) => {
     setCurrentPage(value);
@@ -38,21 +43,26 @@ const FlatmateHome = () => {
   return (
     <div className='flatmatePage'>
       <section>
-        <div className="filterBox">
+        <button className='filterButton' onClick={toggleFilterBox}>Filters</button>
+        {isFilterBoxVisible &&
+          <div className="filterBox">
 
-          <Typography>Categories</Typography>
-          <ul className="categoryBox">
-            {categories.map((category) => (
-              <li className="category-link"
-                key={category}
-                onClick={changeCategory}
-              >
-                {category}
-              </li>
-            ))}
-          </ul>
+            <Typography>Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li className="category-link"
+                  key={category}
+                  onClick={changeCategory}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
 
-        </div>
+          </div>
+        }
+
+
         <div className="flatmate-container">
           <div className="cards">
             {
