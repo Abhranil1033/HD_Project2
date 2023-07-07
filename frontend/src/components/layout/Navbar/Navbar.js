@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import "./Navbar.css"
+import "./Navbar.css";
+import { useSelector } from 'react-redux';
+import UserOptions from "../../User/UserOptions.js"
 
 const Navbar = () => {
+    const { isAuthenticated, user } = useSelector((state) => state.user);
   return (
     <div>
          <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -24,7 +27,8 @@ const Navbar = () => {
                             <Link className="nav-link" to="#">List Property</Link>
                         </li>
                         <div>
-                            <Link to="/login" className="btn btn-secondary mx-5">Sign Up</Link>
+                            {!isAuthenticated && <Link to="/login" className="btn btn-secondary mx-5">Sign Up</Link>}
+                            {isAuthenticated && <UserOptions user={user} />}
                         </div>
                         <div className="form-check form-switch ms-5">
                             <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>

@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-// const mongoose = require("mongoose");
+const fileUpload = require("express-fileupload");
 
 const errorMiddleware = require("./middleware/error");
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(fileUpload());
 
 //Route imports
 const flat = require("./routes/flatRoute");
