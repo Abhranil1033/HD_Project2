@@ -15,7 +15,8 @@ import Profile from "./components/User/Profile.js";
 import store from "./store";
 import { loadUser } from "./actions/userActions";
 import { useDispatch,useSelector } from "react-redux";
-import UpdateProfile from "./components/User/UpdateProfile.js"
+import UpdateProfile from "./components/User/UpdateProfile.js";
+import UpdatePassword from "./components/User/UpdatePassword.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function App() {
         <Route path="/login" element={<LoginSignUp />}></Route>
         {isAuthenticated && <Route path="/account" element={<Profile />}></Route>}
         {isAuthenticated && <Route path="/me/update" element={<UpdateProfile/>}></Route>}
+        {isAuthenticated && <Route path="/password/update" element={<UpdatePassword/>}></Route>}
 
       </Routes>
       <Footer />
