@@ -41,8 +41,8 @@ const FlatmateDetails = () => {
     </div>
     <div className="fd-container70">
        <div className="intro">
-         <h3>Radhika Merchant</h3>|
-         <h6 className="mx-2">female</h6>|
+         <h3>Radhika Merchant</h3>
+         <h5 className="mx-2">female</h5>
          <h6 className="mx-2">24</h6>
        </div>
        <div className="basic-info">

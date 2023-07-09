@@ -3,29 +3,35 @@
 }
 
 .fd-container30 {
-    width: 30%;
+    width: 40%;
   }
 .image-container img{
-    width:100%;
-    padding:40px;
-    padding-left:60px;
+    width: 100%;
+    padding:60px;
+    padding-right:70px;
 
 }
 
 .fd-container70 {
-    width: 70%;
+    width: 60%;
 }
 .intro{
+    padding-top: 20px;
     display: flex;
 }
 .intro h3 {
+    padding-top:10px;
     margin-right: 10px;
     line-height: 1;
 }
-  
+
+.intro h5 {
+    line-height: 1;
+    margin-top: 17px;
+}
 .intro h6 {
     line-height: 1;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .basic-info{
     padding-top:70px;
@@ -42,3 +48,46 @@
 .fd-button button {
     margin-right: 10px;
   }
+ @media screen and (max-width: 768px) {
+    .fd-container {
+      flex-direction: column;
+    }
+    
+    .fd-container30, .fd-container70 {
+      width: 100%;
+      padding: 0;
+    }
+    
+    .image-container img {
+      padding: 20px;
+      min-width: 200px;
+    }
+    
+    .intro {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .intro h3 {
+      margin-right: 0;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .basic-info {
+      padding-top: 20px;
+      text-align: center;
+    }
+    
+    .fd-button {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      justify-content: center;
+    }
+    
+    .fd-button button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  
