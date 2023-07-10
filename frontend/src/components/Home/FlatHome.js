@@ -100,7 +100,11 @@ const FlatHome = () => {
               flats.map((flat, i) => (
                 <div key={i} className="card">
                   <h3>{flat.city}</h3>
-                  <img src={flat.images[0].url} alt="flat" />
+                  <div className='card-image'>
+                  {flat.images.length > 0 && (
+                      <img src={flat.images[0].url} alt="flat"  className='image' />
+                  )}
+                  </div>
                   <Link className="flat-button" to={flat._id}>View</Link>
                 </div>
               ))

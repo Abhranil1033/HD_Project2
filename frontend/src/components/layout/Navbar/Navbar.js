@@ -7,8 +7,8 @@ import UserOptions from "../../User/UserOptions.js"
 const Navbar = () => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
   return (
-    <div>
-         <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <div >
+         <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" >
             {/* <div className="container" > */}
                 <Link className="navbar-brand" to="/">FlatHunt</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

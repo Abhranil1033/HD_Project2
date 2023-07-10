@@ -1,10 +1,142 @@
 import React from 'react';
-import "./FlatDetails.css";
+import './FlatDetails.css';
+import room from './room.jpg';
+import room2 from './room2.jpg';
+import user from './user.png';
+import ReactStars from 'react-stars'
 
 const FlatDetails = () => {
   return (
-    <div>FlatDetails</div>
-  )
-}
+    <div className="maindiv">
+      <div className="fds-container">
+        <div className="fds-container20">
+          <div className="card2">
+            <h3>Address1</h3>
+            <h5>Address2</h5>
+            <div className="special2">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nihil, minima in voluptatem dolorum natus ad, porro.</p>
+              <h6>room details</h6><hr />
+              <h6>room details</h6><hr />
+              <h6>room details</h6>
+              <h2>Price in rupee</h2>
+            </div>
+            <div className="fav-button">
+              <button type="button" className="btn btn-warning">Add to Favourites</button>
+              <button type="button" className="btn btn-warning">Prebook Room</button>
+            </div>
+          </div>
+        </div>
+        <div className="fds-container60">
+          <div id="carouselExampleIndicators" className="carousel slide">
+            <div className="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                className="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div className="carousel-inner">
+              <div className="carousel-item active" >
+                <img src={room} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+              </div>
+              <div className="carousel-item">
+                <img src={room2} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+              </div>
+              <div className="carousel-item">
+                <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+              </div>
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+              <span className="visually-hidden ">Previous</span>
+            </button>
+            <button className="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span className="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+              <span className="visually-hidden ">Next</span>
+            </button>
+            <div className="rating-button">
+              <ReactStars
+                count={5}
+                size={24}
+                color2={'#ffd700'} />
+            </div>
+          </div>
+        </div>
+        <div className="fds-container201">
+          <div className="card2">
+            <h4>Location</h4>
+          </div>
+        </div>
+      </div>
+      <div className="fds-review">
+        <div className="reviewbar">
+          <div className="card bg-body-secondary " >
+            <div className="card-body">
+              <h5 className="card-title">person-1</h5>
+              <h6 className="card-subtitle mb-2 text-body-secondary">address</h6>
+              <div className="rating-button2">
+                <ReactStars
+                  count={5}
+                  size={24}
+                  color2={'#ffd700'} />
+              </div>
+              <div className="read-more">
+                <p className="card-text">sbfjhfdbsafbjjglablsg....</p>
+                <a href="https://cloud.mongodb.com/v2/601f9226e6a61770ddad13b2#/clusters">read-more</a>
+              </div>
+            </div>
+          </div>
+          <div className="card bg-body-secondary" >
+            <div className="card-body">
+              <h5 className="card-title">person-2</h5>
+              <h6 className="card-subtitle mb-2 text-body-secondary">address</h6>
+              <div className="rating-button2">
+                <ReactStars
+                  count={5}
+                  size={24}
+                  color2={'#ffd700'} />
+              </div>
+              <div className="read-more">
+                <p className="card-text">sbfjhfdbsafbjjglablsg....</p>
+                <a href="https://cloud.mongodb.com/v2/601f9226e6a61770ddad13b2#/clusters">read-more</a>
+              </div>
+            </div>
+          </div>
+          <div className="card bg-body-secondary" >
+            <div className="card-body">
+              <h5 className="card-title">person-3</h5>
+              <h6 className="card-subtitle mb-2 text-body-secondary">address</h6>
+              <div className="rating-button2">
+                <ReactStars
+                  count={5}
+                  size={24}
+                  color2={'#ffd700'} />
+              </div>
+              <div className="read-more">
+                <p className="card-text">sbfjhfdbsafbjjglablsg....</p>
+                <a href="https://cloud.mongodb.com/v2/601f9226e6a61770ddad13b2#/clusters">read-more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default FlatDetails
+export default FlatDetails;

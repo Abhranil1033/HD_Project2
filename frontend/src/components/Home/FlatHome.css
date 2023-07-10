@@ -38,6 +38,12 @@
 .card:hover {
     border-color: aqua;
 }
+.card-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
 .card img {
     width: 100%;
