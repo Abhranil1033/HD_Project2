@@ -20,6 +20,8 @@ const UserOptions = ({user}) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
+    const { loading } = useSelector((state) => state.user);
+
     const actions = [
         { icon: <ListAltIcon />, name: "Orders", func: orders },
         { icon: <PersonIcon />, name: "Profile", func: profile },
@@ -43,6 +45,16 @@ const UserOptions = ({user}) => {
         dispatch(logout());
         alert.success("Logout Success");
     }
+
+    if (!user || !user.avatar || !user.avatar.url) {
+        return <div>Loading...</div>; // Render null or a loading state if the user details or avatar URL are not available
+    }
+
+    // if (loading) {
+    //     // Render a loading state or component if the user details are still being fetched
+    //     return <div>Loading...</div>;
+    //   }
+
 
   return (
     <Fragment>

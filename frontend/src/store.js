@@ -5,7 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { flatReducer } from './reducers/flatReducer';
 import { flatmateDetailsReducer, flatmateReducer } from './reducers/flatmateReducer';
 // import { productsDetailsReducer, productsReducer } from "./reducers/productReducers"
-import {  profileReducer, userReducer } from "./reducers/userReducers"
+import {  forgotPasswordReducer, profileReducer, userReducer } from "./reducers/userReducers"
 // import { cartReducer } from "./reducers/cartReducer"
 
 let initialState = {};
@@ -18,7 +18,8 @@ const store = configureStore({
         flatmates : flatmateReducer,
         flatmateDetails : flatmateDetailsReducer,
         user : userReducer,
-        profile: profileReducer
+        profile: profileReducer,
+        forgotPassword: forgotPasswordReducer
     }
 }, initialState, composeWithDevTools(applyMiddleware(...middleware)));
 

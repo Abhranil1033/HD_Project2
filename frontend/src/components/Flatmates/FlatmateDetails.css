@@ -1,114 +1,123 @@
-.fd-container{
-    display:flex;
+.fd-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .fd-container30 {
-    width: 40%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
 
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  }
-.image-container img{
-    width: 100%;
-    padding-left:60px;
-    padding-right:70px;
-    padding-top:60px;
+.image-container img {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+}
+
+.rating-button {
+  margin-top: 10px;
 }
 
 .fd-container70 {
-    width: 60%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
-.intro{
-    padding-top: 60px;
-    display: flex;
+
+.intro {
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
 }
+
 .intro h3 {
-    padding-top:10px;
-    margin-right: 10px;
-    line-height: 1;
+  padding-top: 10px;
+  margin-right: 10px;
+  line-height: 1;
 }
 
-.intro h5 {
-    line-height: 1;
-    margin-top: 17px;
-}
+.intro h5,
 .intro h6 {
-    line-height: 1;
-    margin-top: 20px;
+  line-height: 1;
+  margin-top: 17px;
 }
-.basic-info{
-    padding-top:40px;
-    display:flex;
-    flex-direction: column;
-}
-.fd-button{
-    padding-top:20px;
-    padding-bottom: 20px;
-    display:flex;
-    justify-content: flex-start;
 
+.basic-info {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.fd-button button {
-    margin-right: 10px;
-  }
-.last-button{
-    padding-top:40px;
-    padding-bottom: 40px;
-    display:flex;
-    justify-content: flex-start;
+
+.fd-button,
+.last-button {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
-.last-button button{
+
+.fd-button button,
+.last-button button {
   margin-right: 10px;
 }
- @media screen and (max-width: 768px) {
-    .fd-container {
-      flex-direction: column;
-    }
-    
-    .fd-container30, .fd-container70 {
-      width: 100%;
-      padding: 0;
-    }
-    
-    .image-container img {
-      padding: 20px;
-      min-width: 200px;
-    }
-    
-    .intro {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .intro h3 {
-      margin-right: 0;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    
-    .basic-info {
-      padding-top: 20px;
-      text-align: center;
-    }
-    
-    .fd-button {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      justify-content: center;
-    }
-    
-    .fd-button button {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-    .last-button {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      justify-content: center;
-    }
-    
-    .last-button button {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
+
+@media screen and (max-width: 768px) {
+  .fd-container {
+    flex-direction: column;
   }
-  
+
+  .fd-container30,
+  .fd-container70 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .image-container img {
+    padding: 20px;
+    min-width: 200px;
+  }
+
+  .intro {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .intro h3 {
+    margin-right: 0;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .basic-info {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .fd-button,
+  .last-button {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+  }
+
+  .fd-button button,
+  .last-button button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}

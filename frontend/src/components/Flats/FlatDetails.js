@@ -12,13 +12,12 @@ const FlatDetails = () => {
         <div className="fds-container20">
           <div className="card2">
             <h3>Address1</h3>
-            <h5>Address2</h5>
             <div className="special2">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nihil, minima in voluptatem dolorum natus ad, porro.</p>
               <h6>room details</h6><hr />
               <h6>room details</h6><hr />
-              <h6>room details</h6>
-              <h2>Price in rupee</h2>
+              <h6>room details</h6><hr />
+              <h2>Rs 20,000 per month</h2>
             </div>
             <div className="fav-button">
               <button type="button" className="btn btn-warning">Add to Favourites</button>
@@ -84,6 +83,7 @@ const FlatDetails = () => {
         </div>
       </div>
       <div className="fds-review">
+        <h3>Reviews<hr /></h3>
         <div className="reviewbar">
           <div className="card bg-body-secondary " >
             <div className="card-body">

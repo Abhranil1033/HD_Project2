@@ -20,6 +20,9 @@ import {
     UPDATE_PASSWORD_SUCCESS,
     UPDATE_PASSWORD_RESET,
     UPDATE_PASSWORD_FAILED,
+    FORGOT_PASSWORD_REQUEST,
+    FORGOT_PASSWORD_SUCCESS,
+    FORGOT_PASSWORD_FAILED,
     CLEAR_ERRORS
 } from "../constants/userConstants";
 
@@ -45,26 +48,24 @@ export const login = (email, password) => async (dispatch) => {
     }
 }
 
-//Register
+// Register
 export const register = (userData) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_USER_REQUEST });
 
-        const config = { headers: { "Content-Type": "multiport/form-data" } };
+        const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-        const { data } = await axios.post(
-            `/api/v1/register`,
-            userData,
-            config
-        );
+        const { data } = await axios.post(`/api/v1/register`, userData, config);
 
-        dispatch({ type: REGISTER_USER_SUCCESS, payload: data.success });
+        dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
+    } catch (error) {
+        dispatch({
+            type: REGISTER_USER_FAILED,
+            payload: error.response.data.message,
+        });
     }
-    catch (error) {
-        dispatch({ type: REGISTER_USER_FAILED, payload: error.response.data.message });
+};
 
-    }
-}
 
 
 //LoadUser
@@ -72,9 +73,9 @@ export const loadUser = () => async (dispatch) => {
     try {
         dispatch({ type: LOAD_USER_REQUEST });
 
-        // const config = { headers: { "Content-Type": "application/json" } };
+        const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get(`/api/v1/me`);
+        const { data } = await axios.get(`/api/v1/me`, config);
 
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
     }
@@ -129,6 +130,25 @@ export const updatePassword = (passwords) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: UPDATE_PASSWORD_FAILED,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+
+//Forgot Password
+export const forgotPassword = (email) => async (dispatch) => {
+    try {
+        dispatch({ type: FORGOT_PASSWORD_REQUEST });
+
+        const config = { headers: { "Content-Type": "application/json" } };
+
+        const { data } = await axios.post(`/api/v1/password/forgot`, email, config);
+
+        dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
+    } catch (error) {
+        dispatch({
+            type: FORGOT_PASSWORD_FAILED,
             payload: error.response.data.message,
         });
     }
