@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./ForgotPassword.css";
-// import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader/Loader";
 // import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userActions";
 import { useAlert } from "react-alert";
+import { load } from "webfontloader";
 // import MetaData from "../layout/MetaData";
 
 const ForgotPassword = () => {
@@ -38,6 +39,8 @@ const ForgotPassword = () => {
   }, [dispatch, error, alert, message]);
 
   return (
+    <Fragment>
+      {loading ? <Loader /> : (
         <Fragment>
           {/* <MetaData title="Forgot Password" /> */}
           <div className="forgotPasswordContainer">
@@ -69,6 +72,8 @@ const ForgotPassword = () => {
             </div>
           </div>
         </Fragment>
+      )}
+    </Fragment>
   );
 };
 

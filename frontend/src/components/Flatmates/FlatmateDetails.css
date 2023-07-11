@@ -71,8 +71,8 @@
   width: 100%;
 }
 
-.fd-button button,
-.last-button button {
+.fd-button a,
+.last-button a {
   margin-right: 10px;
 }
 

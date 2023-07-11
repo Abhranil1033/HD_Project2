@@ -30,7 +30,7 @@
   justify-content: flex-start;
 }
 
-.fav-button button {
+.fav-button a {
   margin-right: 10px;
 }
 

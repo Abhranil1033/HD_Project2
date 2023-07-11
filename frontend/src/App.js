@@ -18,7 +18,10 @@ import { useDispatch,useSelector } from "react-redux";
 import UpdateProfile from "./components/User/UpdateProfile.js";
 import UpdatePassword from "./components/User/UpdatePassword.js";
 import ForgotPassword from "./components/User/ForgotPassword.js";
-
+import Cart from './components/Cart/Cart.js';
+import FlatmateCart from './components/Cart/FlatmateCart.js';
+import FlatCart from './components/Cart/FlatCart.js';
+import ConfirmBooking from "./components/Cart/ConfirmBooking.js"
 
 function App() {
   // const dispatch = useDispatch();
@@ -49,6 +52,10 @@ function App() {
         {isAuthenticated && <Route path="/me/update" element={<UpdateProfile/>}></Route>}
         {isAuthenticated && <Route path="/password/update" element={<UpdatePassword/>}></Route>}
         <Route path="/password/forgot" element={<ForgotPassword />}></Route>
+        {isAuthenticated && <Route path="/cart" element={<Cart />}></Route>}
+        {isAuthenticated && <Route path="/cart/flatmates" element={<FlatmateCart />}></Route>}
+        {isAuthenticated && <Route path="/cart/flats" element={<FlatCart />}></Route>}
+        {isAuthenticated && <Route path="/book/confirm" element={<ConfirmBooking />}></Route>}
       </Routes>
       <Footer />
     </Router>
