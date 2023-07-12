@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import WebFont from "webfontloader";
-// import { useEffect } from 'react';
+import {useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar/Navbar.js"
 import Home from "./components/Home/Home.js";
@@ -21,12 +21,20 @@ import ForgotPassword from "./components/User/ForgotPassword.js";
 import Cart from './components/Cart/Cart.js';
 import FlatmateCart from './components/Cart/FlatmateCart.js';
 import FlatCart from './components/Cart/FlatCart.js';
-import ConfirmBooking from "./components/Cart/ConfirmBooking.js"
+import ConfirmBooking from "./components/Cart/ConfirmBooking.js";
+import Payment from "./components/Cart/Payment.js";
+import axios from "axios";
+
 
 function App() {
   // const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState("");
 
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
 
   React.useEffect(() => {
     WebFont.load({
@@ -35,6 +43,7 @@ function App() {
       },
     });
     store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
 
 
@@ -56,6 +65,7 @@ function App() {
         {isAuthenticated && <Route path="/cart/flatmates" element={<FlatmateCart />}></Route>}
         {isAuthenticated && <Route path="/cart/flats" element={<FlatCart />}></Route>}
         {isAuthenticated && <Route path="/book/confirm" element={<ConfirmBooking />}></Route>}
+        {isAuthenticated && <Route path="/payment" element={<Payment />}></Route>}
       </Routes>
       <Footer />
     </Router>

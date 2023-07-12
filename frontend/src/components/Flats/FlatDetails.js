@@ -1,8 +1,8 @@
 import { React, useEffect, Fragment } from 'react';
 import './FlatDetails.css';
-import room from './room.jpg';
-import room2 from './room2.jpg';
-import user from './user.png';
+// import room from './room.jpg';
+// import room2 from './room2.jpg';
+// import user from './user.png';
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,6 +11,8 @@ import { clearErrors, getFlatDetails } from '../../actions/flatActions';
 import { useAlert } from "react-alert";
 import { addFlatsToCart } from '../../actions/cartActions';
 import Loader from '../layout/Loader/Loader';
+import { updateFlatCartTotal } from '../../actions/cartActions.js';
+
 
 
 const FlatDetails = () => {
@@ -19,11 +21,22 @@ const FlatDetails = () => {
   const alert = useAlert();
 
   const { flat, loading, error } = useSelector((state) => state.flatDetails);
+  const { flatCartItems } = useSelector((state) => state.flatCart);
+
 
   const addToCartHandler = () => {
     dispatch(addFlatsToCart(params.id));
     alert.success("Flat added to cart");
   }
+
+  const calculateGrossTotal = () => {
+    return flatCartItems.reduce((acc, item) => acc + item.price, 0);
+  };
+
+  useEffect(() => {
+    const grossTotal = calculateGrossTotal();
+    dispatch(updateFlatCartTotal(grossTotal));
+  }, [dispatch, flatCartItems]);
 
   useEffect(() => {
     if (error) {
@@ -81,13 +94,13 @@ const FlatDetails = () => {
                 </div>
                 <div className="carousel-inner">
                   <div className="carousel-item active" >
-                    <img src={room} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
                   </div>
                   <div className="carousel-item">
-                    <img src={room2} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
                   </div>
                   <div className="carousel-item">
-                    <img src={room} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
                   </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

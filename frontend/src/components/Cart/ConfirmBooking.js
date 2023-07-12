@@ -2,28 +2,29 @@ import React from 'react';
 import { Fragment } from 'react';
 import "./ConfirmBooking.css";
 import { Link } from 'react-router-dom';
-import { useSelector,useNavigate } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ConfirmBooking = () => {
     const { user } = useSelector((state) => state.user);
     const { flatCartItems } = useSelector((state) => state.flatCart);
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const totalPrice = flatCartItems.reduce(
         (acc, item) => acc + item.price,
         0
     );
 
-    // const proceedToPayment = () => {
-    //     const data = {
-    //       totalPrice,
-    //     };onClick={proceedToPayment
+    const proceedToPayment = () => {
+        const data = {
+          totalPrice,
+        };
     
-    //     sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    
-    //     navigate("/process/payment");
-    //   };
+        sessionStorage.setItem("orderInfo", JSON.stringify(data));
+        
+        navigate("/payment");
+      };
 
     return (
         <Fragment>
@@ -46,7 +47,7 @@ const ConfirmBooking = () => {
                             <span>Total payable amount : {totalPrice}</span>
                         </div>
                         <div className='paymentBtn'>
-                            <Link>Proceed to Payment</Link>
+                            <Link to="/payment" onClick={proceedToPayment}>Proceed to Payment</Link>
                         </div>
                     </div>
                 </div>

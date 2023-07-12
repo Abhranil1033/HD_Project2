@@ -15,11 +15,13 @@ app.use(fileUpload());
 const flat = require("./routes/flatRoute");
 const flatmate = require("./routes/flatmateRoute");
 const user = require("./routes/userRoute");
+const payment = require("./routes/paymentRoute");
 
 
 app.use("/api/v1",flat);
 app.use("/api/v1",flatmate);
 app.use("/api/v1",user);
+app.use("/api/v1",payment);
 
 
 app.use(errorMiddleware);

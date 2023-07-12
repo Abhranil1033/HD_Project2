@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment} from 'react';
 import "./FlatCart.css";
 import FlatCartItemCard from "./FlatCartItemCard.js";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFlatsFromCart } from '../../actions/cartActions';
+import { removeFlatsFromCart,updateFlatCartTotal } from '../../actions/cartActions';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import {Link , useNavigate } from "react-router-dom";
 import { Typography } from '@mui/material';
@@ -17,9 +17,18 @@ const FlatCart = () => {
     dispatch(removeFlatsFromCart(id));
   }
 
+  const calculateGrossTotal = () => {
+    return flatCartItems.reduce((acc, item) => acc + item.price, 0);
+  };
+
   const checkOutHandler = () => {
     navigate("/login?redirect=/book/confirm")
   }
+
+  React.useEffect(() => {
+    const grossTotal = calculateGrossTotal();
+    dispatch(updateFlatCartTotal(grossTotal));
+  }, [dispatch, flatCartItems]);
 
 
   return (

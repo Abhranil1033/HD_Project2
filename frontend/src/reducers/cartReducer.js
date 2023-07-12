@@ -1,9 +1,12 @@
-import { ADD_FLAT_TO_CART,ADD_FLATMATE_TO_CART,REMOVE_FLAT_CART_ITEM,REMOVE_FLATMATE_CART_ITEM } from "../constants/cartConstants";
+import { ADD_FLAT_TO_CART, ADD_FLATMATE_TO_CART, REMOVE_FLAT_CART_ITEM, REMOVE_FLATMATE_CART_ITEM, UPDATE_FLAT_CART_TOTAL } from "../constants/cartConstants";
 
 export const flatCartReducer = (state = {
     flatCartItems: localStorage.getItem("flatCartItems")
         ? JSON.parse(localStorage.getItem("flatCartItems"))
-        : []
+        : [],
+    grossTotal: localStorage.getItem("grossTotal")
+        ? parseFloat(localStorage.getItem("grossTotal"))
+        : 0,
 }, action) => {
     switch (action.type) {
         case ADD_FLAT_TO_CART:
@@ -31,6 +34,14 @@ export const flatCartReducer = (state = {
             return {
                 ...state,
                 flatCartItems: state.flatCartItems.filter((i) => i.flat !== action.payload),
+            };
+        case UPDATE_FLAT_CART_TOTAL:
+            const grossTotal = action.payload;
+            localStorage.setItem("grossTotal", grossTotal); // Store the gross total in localStorage
+
+            return {
+                ...state,
+                grossTotal: parseFloat(grossTotal),
             };
 
         default:

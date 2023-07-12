@@ -1,4 +1,4 @@
-import { ADD_FLAT_TO_CART,ADD_FLATMATE_TO_CART,REMOVE_FLAT_CART_ITEM,REMOVE_FLATMATE_CART_ITEM } from "../constants/cartConstants";
+import { ADD_FLAT_TO_CART,ADD_FLATMATE_TO_CART,REMOVE_FLAT_CART_ITEM,REMOVE_FLATMATE_CART_ITEM ,UPDATE_FLAT_CART_TOTAL} from "../constants/cartConstants";
 import axios from "axios";
 
 // Add flats to Cart
@@ -28,6 +28,18 @@ export const removeFlatsFromCart = (id) => async (dispatch, getState) => {
 
     localStorage.setItem("flatCartItems", JSON.stringify(getState().flatCart.flatCartItems));
 };
+
+
+// Update flat cart total
+export const updateFlatCartTotal = (total) => (dispatch, getState) => {
+    dispatch({
+      type: UPDATE_FLAT_CART_TOTAL,
+      payload: total,
+    });
+  
+    localStorage.setItem("grossTotal", JSON.stringify(getState().flatCart.grossTotal));
+  };
+  
 
 
 // Add flatmates to Cart
