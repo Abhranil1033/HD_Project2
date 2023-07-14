@@ -31,8 +31,7 @@ const Navbar = () => {
                             {isAuthenticated && <UserOptions user={user} />}
                         </div>
                         <div className="form-check form-switch ms-5">
-                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-                            <label className="form-check-label" for="flexSwitchCheckDefault">Dark Mode</label>
+
                         </div>
                     </ul>
                 </div>
