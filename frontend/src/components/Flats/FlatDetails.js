@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './FlatDetails.css';
 import room from './room.jpg';
 import room2 from './room2.jpg';
@@ -6,6 +6,41 @@ import user from './user.png';
 import ReactStars from 'react-stars'
 
 const FlatDetails = () => {
+  const [rating, setRating] = useState(0);
+  const [reviewVisibility, setReviewVisibility] = useState({});
+
+  useEffect(() => {
+    const fetchDataFromBackend = () => {
+      const ratingFromBackend = 4.5;
+      setRating(ratingFromBackend);
+    };
+
+    fetchDataFromBackend();
+  }, []);
+
+  const handleReadMoreClick = (person) => {
+    setReviewVisibility((prevState) => ({
+      ...prevState,
+      [person]: !prevState[person]
+    }));
+  };
+
+  const renderReviewText = (person) => {
+    const isFullReviewVisible = reviewVisibility[person];
+    if (isFullReviewVisible) {
+      return (
+        <p className="card-text">
+          sbfjhfdbsafbjjglablsghow are youjshfksdbfljgbaljglgbdlb
+        </p>
+      );
+    } else {
+      return (
+        <p className="card-text">
+          sbfjhfdbsafbjjglablsg....
+        </p>
+      );
+    }
+  };
   return (
     <div className="maindiv">
       <div className="fds-container">
@@ -72,9 +107,11 @@ const FlatDetails = () => {
               <ReactStars
                 count={5}
                 size={24}
-                color2={'#ffd700'} />
+                color2={'#ffd700'}
+                value={rating}
+                edit={false} />
             </div>
-          </div>
+          </div> 
         </div>
         <div className="fds-container201">
           <div className="card2">
@@ -83,7 +120,7 @@ const FlatDetails = () => {
         </div>
       </div>
       <div className="fds-review">
-        <h3>Reviews<hr /></h3>
+      <h3>Reviews<hr /></h3>
         <div className="reviewbar">
           <div className="card bg-body-secondary " >
             <div className="card-body">
@@ -93,11 +130,19 @@ const FlatDetails = () => {
                 <ReactStars
                   count={5}
                   size={24}
-                  color2={'#ffd700'} />
+                  color2={'#ffd700'}
+                  value={rating}
+                  edit={false}
+                />
               </div>
               <div className="read-more">
-                <p className="card-text">sbfjhfdbsafbjjglablsg....</p>
-                <a href="https://cloud.mongodb.com/v2/601f9226e6a61770ddad13b2#/clusters">read-more</a>
+                {renderReviewText('person-1')}
+                <button
+                  className="read-more-button"
+                  onClick={() => handleReadMoreClick('person-1')}
+                >
+                  {reviewVisibility['person-1'] ? 'Show Less' : 'Read More'}
+                </button>
               </div>
             </div>
           </div>
@@ -109,11 +154,19 @@ const FlatDetails = () => {
                 <ReactStars
                   count={5}
                   size={24}
-                  color2={'#ffd700'} />
+                  color2={'#ffd700'}
+                  value={rating}
+                  edit={false}
+                />
               </div>
               <div className="read-more">
-                <p className="card-text">sbfjhfdbsafbjjglablsg....</p>
-                <a href="https://cloud.mongodb.com/v2/601f9226e6a61770ddad13b2#/clusters">read-more</a>
+                {renderReviewText('person-2')}
+                <button
+                  className="read-more-button"
+                  onClick={() => handleReadMoreClick('person-2')}
+                >
+                  {reviewVisibility['person-2'] ? 'Show Less' : 'Read More'}
+                </button>
               </div>
             </div>
           </div>
@@ -125,11 +178,19 @@ const FlatDetails = () => {
                 <ReactStars
                   count={5}
                   size={24}
-                  color2={'#ffd700'} />
+                  color2={'#ffd700'}
+                  value={rating}
+                  edit={false}
+                />
               </div>
               <div className="read-more">
-                <p className="card-text">sbfjhfdbsafbjjglablsg....</p>
-                <a href="https://cloud.mongodb.com/v2/601f9226e6a61770ddad13b2#/clusters">read-more</a>
+                {renderReviewText('person-3')}
+                <button
+                  className="read-more-button"
+                  onClick={() => handleReadMoreClick('person-3')}
+                >
+                  {reviewVisibility['person-3'] ? 'Show Less' : 'Read More'}
+                </button>
               </div>
             </div>
           </div>
