@@ -1,0 +1,79 @@
+body {
+    background-color: rgb(233, 242, 247);
+}
+
+
+.confirmHeading {
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  .confirmBook {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    border: 2px solid #000;
+    padding: 20px;
+  }
+  
+  .confirmBookLeft,
+  .confirmBookRight {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .orderDetails img {
+    /* max-width: 100px; */
+    height: auto;
+    width: 20vh;
+    margin: 10px;
+
+  }
+  
+  .orderDetails span {
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .confirmBookRight {
+    border-left: 2px solid #000;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .paymentDetails span {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .paymentBtn {
+    text-align: center;
+    border-radius: 4px;
+    background-color: #73c2fa;
+    color: black;
+  }
+  
+  .paymentBtn a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .paymentBtn:hover{
+    background-color: black;
+    color: #73c2fa;
+    transition: 0.5s;
+    transform: scale(0.95);
+  }
+
+  .paymentBtn a:hover{
+    color: #73c2fa;
+  }

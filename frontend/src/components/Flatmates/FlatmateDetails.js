@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import "./FlatmateDetails.css";
 import user from './user.png';
@@ -227,11 +228,12 @@ const FlatmateDetails = () => {
                   {reviewVisibility['person-3'] ? 'Show Less' : 'Read More'}
                 </button>
               </div>
+
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </Fragment>
   )
 }
 

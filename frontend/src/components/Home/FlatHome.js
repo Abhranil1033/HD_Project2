@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Fragment } from 'react';
 import "./FlatHome.css"
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
@@ -6,6 +7,7 @@ import { getFlats } from '../../actions/flatActions';
 import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { Typography, Slider } from "@material-ui/core";
+import Loader from "../layout/Loader/Loader.js"
 
 const categories = ["X","Y","Z"];
 
@@ -51,7 +53,9 @@ const FlatHome = () => {
   }, [dispatch, currentPage, rent, category, ratings]);
 
   return (
-    <div className='flatPage'>
+    <Fragment>
+      {loading ? <Loader /> : (
+      <div className='flatPage'>
       <section className='flatSection'>
       <button className='filterButton' onClick={toggleFilterBox}>Filters</button>
 
@@ -131,6 +135,8 @@ const FlatHome = () => {
           /> */}
       </section>
     </div>
+    )}
+    </Fragment>
   )
 }
 
