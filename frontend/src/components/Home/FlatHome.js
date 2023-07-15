@@ -7,7 +7,9 @@ import { getFlats } from '../../actions/flatActions';
 import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { Typography, Slider } from "@material-ui/core";
-import Loader from "../layout/Loader/Loader.js"
+import Loader from "../layout/Loader/Loader.js";
+import { useParams } from "react-router-dom";
+
 
 const categories = ["X","Y","Z"];
 
@@ -15,6 +17,8 @@ const categories = ["X","Y","Z"];
 const FlatHome = () => {
 
   const dispatch = useDispatch();
+  const params = useParams();
+
   const { loading, error, flats, totalFlats, itemsInAPage } = useSelector((state) => state.flats);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,11 +50,13 @@ const FlatHome = () => {
     console.log(ratings);
   }
 
+  const keyword = params.keyword;
+
   const paginationVisible = flats.length > 0;
 
   useEffect(() => {
-    dispatch(getFlats(currentPage, rent, category, ratings));
-  }, [dispatch, currentPage, rent, category, ratings]);
+    dispatch(getFlats(keyword,currentPage, rent, category, ratings));
+  }, [dispatch,keyword, currentPage, rent, category, ratings]);
 
   return (
     <Fragment>
@@ -109,7 +115,7 @@ const FlatHome = () => {
                       <img src={flat.images[0].url} alt="flat"  className='image' />
                   )}
                   </div>
-                  <Link className="flat-button" to={flat._id}>View</Link>
+                  <Link className="flat-button" to={`/flat/${flat._id}`}>View</Link>
                 </div>
               ))
             }

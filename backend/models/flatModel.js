@@ -4,6 +4,7 @@ const flatSchema = mongoose.Schema({
     city:{
         type:String,
         required : [true,"Enter your city"],
+        trim: true
     },
     description:[
         {

@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.route("/flatmates").get(getAllFlatmates);
 router.route("/flatmates/new").post(isAuthenticatedUser,authorizeRoles("admin"),createItem);
-router.route("/flatmates/:id").get(flatmateDetails).put(isAuthenticatedUser,authorizeRoles("admin"),updateDetails).delete(isAuthenticatedUser,authorizeRoles("admin"),deleteItem);
+router.route("/flatmate/:id").get(flatmateDetails).put(isAuthenticatedUser,authorizeRoles("admin"),updateDetails).delete(isAuthenticatedUser,authorizeRoles("admin"),deleteItem);
 router.route("/flatmate/review").put(isAuthenticatedUser,createFlatmateReview);
 router.route("/flatmate/reviews").get(getAllFlatmateReviews).delete(deleteFlatmateReview);
 

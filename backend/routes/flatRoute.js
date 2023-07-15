@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.route("/flats").get(getAllFlats);
 router.route("/flats/new").post(isAuthenticatedUser,authorizeRoles("admin"),createItem);
-router.route("/flats/:id").get(flatDetails).put(isAuthenticatedUser,authorizeRoles("admin"),updateDetails).delete(isAuthenticatedUser,authorizeRoles("admin"),deleteItem);
+router.route("/flat/:id").get(flatDetails).put(isAuthenticatedUser,authorizeRoles("admin"),updateDetails).delete(isAuthenticatedUser,authorizeRoles("admin"),deleteItem);
 router.route("/flat/review").put(isAuthenticatedUser,createFlatReview);
 router.route("/flat/reviews").get(getAllFlatReviews).delete(deleteFlatReview);
 
