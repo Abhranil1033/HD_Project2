@@ -169,7 +169,6 @@ const FlatDetails = () => {
               <div className="card bg-body-secondary " >
                 <div className="card-body">
                   <h5 className="card-title">person-1</h5>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">address</h6>
                   <div className="rating-button2">
                     <ReactStars
                       count={5}
@@ -192,7 +191,6 @@ const FlatDetails = () => {
               <div className="card bg-body-secondary" >
                 <div className="card-body">
                   <h5 className="card-title">person-2</h5>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">address</h6>
                   <div className="rating-button2">
                     <ReactStars
                       count={5}
@@ -215,7 +213,6 @@ const FlatDetails = () => {
               <div className="card bg-body-secondary" >
                 <div className="card-body">
                   <h5 className="card-title">person-3</h5>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">address</h6>
                   <div className="rating-button2">
                     <ReactStars
                       count={5}
