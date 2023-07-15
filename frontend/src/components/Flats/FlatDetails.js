@@ -1,8 +1,9 @@
+
 import { React, useEffect, Fragment } from 'react';
 import './FlatDetails.css';
 // import room from './room.jpg';
 // import room2 from './room2.jpg';
-// import user from './user.png';
+import user from './user.png';
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -94,13 +95,13 @@ const FlatDetails = () => {
                 </div>
                 <div className="carousel-inner">
                   <div className="carousel-item active" >
-                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
                   </div>
                   <div className="carousel-item">
-                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
                   </div>
                   <div className="carousel-item">
-                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
                   </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
