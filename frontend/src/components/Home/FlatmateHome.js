@@ -83,7 +83,8 @@ const FlatmateHome = () => {
                       <h6>{cards.age}</h6> */}
                     </div>
                     <Link to={`/flatmate/${flatmate._id}`} className="flatmate-button">Find out more</Link>
-                  </div>
+
+               </div>
                 ))
               }
             </div>

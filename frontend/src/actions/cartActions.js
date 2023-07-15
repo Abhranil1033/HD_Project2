@@ -3,6 +3,7 @@ import axios from "axios";
 
 // Add flats to Cart
 export const addFlatsToCart = (id) => async (dispatch, getState) => {
+
     const { data } = await axios.get(`/api/v1/flat/${id}`);
 
     dispatch({
@@ -44,7 +45,9 @@ export const updateFlatCartTotal = (total) => (dispatch, getState) => {
 
 // Add flatmates to Cart
 export const addFlatmatesToCart = (id) => async (dispatch, getState) => {
+
     const { data } = await axios.get(`/api/v1/flatmate/${id}`);
+
 
     dispatch({
         type: ADD_FLATMATE_TO_CART,
