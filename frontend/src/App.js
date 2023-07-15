@@ -24,6 +24,7 @@ import FlatCart from './components/Cart/FlatCart.js';
 import ConfirmBooking from "./components/Cart/ConfirmBooking.js";
 import Payment from "./components/Cart/Payment.js";
 import axios from "axios";
+import Search from "../src/components/Search/Search.js"
 
 
 function App() {

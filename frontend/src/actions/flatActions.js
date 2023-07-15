@@ -52,25 +52,6 @@ export const getFlatDetails = (id) => async (dispatch) => {
 
 
 
-export const getFlatDetails = (id)=> async (dispatch) => {
-    try{
-        dispatch({type : FLAT_DETAILS_REQUEST});
-
-        const {data} = await axios.get(`/api/v1/flats/${id}`);
-
-        dispatch({
-            type : FLAT_DETAILS_SUCCESS,
-            payload : data.flat,
-        })
-    } catch(error){
-        dispatch({
-            type : FLAT_DETAILS_FAILED,
-            payload : error.response.data.message,
-        });
-    }
-};
-
-
 export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
 }
