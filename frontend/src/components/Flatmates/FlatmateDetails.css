@@ -80,6 +80,11 @@
 }
 
 
+.fd-button a,
+.last-button a {
+  margin-right: 10px;
+}
+
 
 @media screen and (max-width: 768px) {
   .fd-container {
