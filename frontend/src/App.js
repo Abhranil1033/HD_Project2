@@ -53,9 +53,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/flats" element={<FlatHome />}></Route>
-        <Route path="/flats/:id" element={<FlatDetails />}></Route>
+        <Route path="/flat/:id" element={<FlatDetails />}></Route>
+        <Route path="/flats/:keyword" element={<FlatHome />}></Route>
         <Route path="/flatmates" element={<FlatmateHome />}></Route>
-        <Route path="/flatmates/:id" element={<FlatmateDetails />}></Route>
+        <Route path="/flatmate/:id" element={<FlatmateDetails />}></Route>
+        <Route path="/search" element={<Search />}></Route>
         <Route path="/login" element={<LoginSignUp />}></Route>
         {isAuthenticated && <Route path="/account" element={<Profile />}></Route>}
         {isAuthenticated && <Route path="/me/update" element={<UpdateProfile/>}></Route>}

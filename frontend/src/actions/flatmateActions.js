@@ -34,7 +34,7 @@ export const getFlatmateDetails = (id)=> async (dispatch) => {
     try{
         dispatch({type : FLATMATE_DETAILS_REQUEST});
 
-        const {data} = await axios.get(`/api/v1/flatmates/${id}`);
+        const {data} = await axios.get(`/api/v1/flatmate/${id}`);
 
         dispatch({
             type : FLATMATE_DETAILS_SUCCESS,

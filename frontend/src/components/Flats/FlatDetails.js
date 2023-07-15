@@ -1,3 +1,4 @@
+
 import { React, useEffect, Fragment } from 'react';
 import './FlatDetails.css';
 // import room from './room.jpg';

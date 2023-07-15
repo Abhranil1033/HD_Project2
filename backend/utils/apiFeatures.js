@@ -30,14 +30,15 @@ class apiFeatures{
         return this;
     }
 
-    pagination(itemsInAPage){
-        const currPage = Number(this.queryStr.page) || 1;
-
-        const skipItems = itemsInAPage * (currPage - 1); //in page 1,we have to skip 0 items => currPage = 1 .Therefore, currPage-1 gives 0 which results in 0 products being skipped.
-
-        this.query = this.query.limit(itemsInAPage).skip(skipItems);
+    pagination(itemsInAPage) {
+        const currentPage = Number(this.queryStr.page) || 1;
+        const skipItems = itemsInAPage * (currentPage - 1);
+      
+        this.query = this.query.skip(skipItems).limit(itemsInAPage);
         return this;
-    }
+      }
+      
+      
 }
 
 module.exports = apiFeatures;
