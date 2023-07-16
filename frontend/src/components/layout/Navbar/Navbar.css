@@ -1,13 +1,33 @@
 .navbar {
-    background-color: #333;
-    color: white; 
+  background-color: rgb(73, 94, 106);
+  color: white; 
   }
   .navbar-brand{
     color:white;
+    font-weight: bolder;
+  }
+  .navbar-brand:hover{
+    color:white;
+    font-weight: bolder;
   }
   .nav-link {
     color: white;
   }
-  .nav-link.active {
-    color: lightblue; 
+
+  .nav-link:hover{
+    color: aqua;
   }
+
+  .nav-link.active {
+    color: aqua; 
+  }
+
+  .navbar-brand-margin {
+    margin-right: 100px;
+    margin-left: 20px;
+  }
+  
+  .navbar-nav li.nav-item:not(:last-child) {
+    margin-right: 10px;
+  }
+  
