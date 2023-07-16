@@ -84,7 +84,7 @@ const FlatmateDetails = () => {
               </div>
               <div className="last-button">
               <button type="button" className="btn btn-success">Review</button>
-              <button type="button" className="btn btn-info">Add as Flatmate</button>
+              <button type="button" className="btn btn-info" onClick={addToFlatmateCartHandler}>Add as Flatmate</button>
             </div>
             </div>
           </div>

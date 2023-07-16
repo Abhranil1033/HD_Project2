@@ -58,6 +58,7 @@ function App() {
         <Route path="/flats/:keyword" element={<FlatHome />}></Route>
         <Route path="/flatmates" element={<FlatmateHome />}></Route>
         <Route path="/flatmate/:id" element={<FlatmateDetails />}></Route>
+        <Route path="/flatmates/:keyword" element={<FlatmateHome />}></Route>
         <Route path="/search" element={<Search />}></Route>
         <Route path="/login" element={<LoginSignUp />}></Route>
         {isAuthenticated && <Route path="/account" element={<Profile />}></Route>}

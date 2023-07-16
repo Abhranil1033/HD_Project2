@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const flatmateSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     proffession: {
         type: String,
-        required: true
+        required: true,
+        trim : true
     },
     numOfReviews:{
         type:Number,

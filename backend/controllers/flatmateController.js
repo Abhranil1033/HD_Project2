@@ -25,7 +25,7 @@ exports.getAllFlatmates = catchAsyncErrors(
         const totalFlatmates = await Flatmate.countDocuments();
     
         // const flatmates = await Flatmate.find();
-        const apiFeature = new apiFeatures(Flatmate.find(),req.query).search().filter(itemsInAPage);
+        const apiFeature = new apiFeatures(Flatmate.find(),req.query).search().filter().pagination(itemsInAPage);
         const flatmates = await apiFeature.query;
 
     

@@ -1,8 +1,6 @@
 
-import { React, useEffect, Fragment,useState} from 'react';
+import { React, useEffect, Fragment, useState } from 'react';
 import './FlatDetails.css';
-// import room from './room.jpg';
-// import room2 from './room2.jpg';
 import user from './user.png';
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
@@ -10,24 +8,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { clearErrors, getFlatDetails } from '../../actions/flatActions';
 import { useAlert } from "react-alert";
-import { addFlatsToCart } from '../../actions/cartActions';
+import { addFlatsToCart, updateFlatCartTotal } from '../../actions/cartActions';
 import Loader from '../layout/Loader/Loader';
-import { updateFlatCartTotal } from '../../actions/cartActions.js';
-
-
 
 const FlatDetails = () => {
-  const [rating, setRating] = useState(0);
+  const params = useParams();
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
+  const { flat, loading, error } = useSelector((state) => state.flatDetails);
+  const { flatCartItems } = useSelector((state) => state.flatCart);
+
+    // const [rating, setRating] = useState(0);
   const [reviewVisibility, setReviewVisibility] = useState({});
 
-  useEffect(() => {
-    const fetchDataFromBackend = () => {
-      const ratingFromBackend = 4.5;
-      setRating(ratingFromBackend);
-    };
-
-    fetchDataFromBackend();
-  }, []);
 
   const handleReadMoreClick = (person) => {
     setReviewVisibility((prevState) => ({
@@ -52,27 +46,15 @@ const FlatDetails = () => {
       );
     }
   };
-  const params = useParams();
-  const dispatch = useDispatch();
-  const alert = useAlert();
-
-  const { flat, loading, error } = useSelector((state) => state.flatDetails);
-  const { flatCartItems } = useSelector((state) => state.flatCart);
-
 
   const addToCartHandler = () => {
     dispatch(addFlatsToCart(params.id));
     alert.success("Flat added to cart");
-  }
 
-  const calculateGrossTotal = () => {
-    return flatCartItems.reduce((acc, item) => acc + item.price, 0);
-  };
-
-  useEffect(() => {
-    const grossTotal = calculateGrossTotal();
+    // Calculate the gross total and update the cart total
+    const grossTotal = flatCartItems.reduce((acc, item) => acc + item.price, 0);
     dispatch(updateFlatCartTotal(grossTotal));
-  }, [dispatch, flatCartItems]);
+  }
 
   useEffect(() => {
     if (error) {
@@ -80,7 +62,16 @@ const FlatDetails = () => {
       dispatch(clearErrors());
     }
     dispatch(getFlatDetails(params.id))
-  }, [dispatch, params.id, error, alert])
+  }, [dispatch, params.id, error, alert]);
+
+  // useEffect(() => {
+  //   const fetchDataFromBackend = () => {
+  //     const ratingFromBackend = 4.5;
+  //     setRating(ratingFromBackend);
+  //   };
+
+  //   fetchDataFromBackend();
+  // }, []);
 
 
   return (
@@ -130,13 +121,18 @@ const FlatDetails = () => {
                 </div>
                 <div className="carousel-inner">
                   <div className="carousel-item active" >
-                    <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    {/* <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} /> */}
                   </div>
                   <div className="carousel-item">
-                    <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    {/* <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} /> */}
+
                   </div>
                   <div className="carousel-item">
-                    <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    <img src={flat.images[0].url} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} />
+                    {/* <img src={user} className="d-block w-100 img-fluid" alt="..." style={{ width: '300px', height: '400px' }} /> */}
+
                   </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -152,7 +148,8 @@ const FlatDetails = () => {
                     count={5}
                     size={24}
                     color2={'#ffd700'}
-                    value={rating}
+                    // value={rating}
+                    value={5}
                     edit={false}  />
                 </div>
               </div>
@@ -175,7 +172,8 @@ const FlatDetails = () => {
                       count={5}
                       size={24}
                       color2={'#ffd700'} 
-                      value={rating}
+                      // value={rating}
+                      value={5}
                      edit={false} />
                   </div>
                   <div className="read-more">
@@ -198,7 +196,8 @@ const FlatDetails = () => {
                       count={5}
                       size={24}
                       color2={'#ffd700'}
-                      value={rating}
+                      // value={rating}
+                      value={5}
                     edit={false}  />
                   </div>
                   <div className="read-more">
@@ -220,7 +219,9 @@ const FlatDetails = () => {
                     <ReactStars
                       count={5}
                       size={24}
-                      color2={'#ffd700'} value={rating}
+                      color2={'#ffd700'} 
+                      // value={rating}
+                      value={5}
                       edit={false} />
                   </div>
                   <div className="read-more">

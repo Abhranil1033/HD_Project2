@@ -9,9 +9,9 @@ import Pagination from '@mui/material/Pagination';
 import { Typography, Slider } from "@material-ui/core";
 import Loader from "../layout/Loader/Loader.js";
 import { useParams } from "react-router-dom";
+// import { getFlatDetails } from '../../actions/flatActions';
 
-
-const categories = ["X","Y","Z"];
+const categories = ["X", "Y", "Z"];
 
 
 const FlatHome = () => {
@@ -50,88 +50,93 @@ const FlatHome = () => {
     console.log(ratings);
   }
 
+  // const viewFlatDetails = (flatId) => {
+  //   // Dispatch the getFlatDetails action with the flatId parameter
+  //   dispatch(getFlatDetails(flatId));
+  // };
+
   const keyword = params.keyword;
 
   const paginationVisible = flats.length > 0;
 
   useEffect(() => {
-    dispatch(getFlats(keyword,currentPage, rent, category, ratings));
-  }, [dispatch,keyword, currentPage, rent, category, ratings]);
+    dispatch(getFlats(keyword, currentPage, rent, category, ratings));
+  }, [dispatch, keyword, currentPage, rent, category, ratings]);
 
   return (
     <Fragment>
       {loading ? <Loader /> : (
-      <div className='flatPage'>
-      <section className='flatSection'>
-      <button className='filterButton' onClick={toggleFilterBox}>Filters</button>
+        <div className='flatPage'>
+          <section className='flatSection'>
+            <button className='filterButton' onClick={toggleFilterBox}>Filters</button>
 
-        {
-          isFilterBoxVisible && 
-          <div className="filterBox">
-          <Typography>Price</Typography>
-          <Slider
-            value={rent}
-            onChange={rentHandler}
-            valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
-            min={0}
-            max={25000}
-          />
+            {
+              isFilterBoxVisible &&
+              <div className="filterBox">
+                <Typography>Price</Typography>
+                <Slider
+                  value={rent}
+                  onChange={rentHandler}
+                  valueLabelDisplay="auto"
+                  aria-labelledby="range-slider"
+                  min={0}
+                  max={25000}
+                />
 
-          <Typography>Categories</Typography>
-          <ul className="categoryBox">
-            {categories.map((category) => (
-              <li className="category-link"
-                key={category}
-                onClick={changeCategory}
-              >
-                {category}
-              </li>
-            ))}
-          </ul>
+                <Typography>Categories</Typography>
+                <ul className="categoryBox">
+                  {categories.map((category) => (
+                    <li className="category-link"
+                      key={category}
+                      onClick={changeCategory}
+                    >
+                      {category}
+                    </li>
+                  ))}
+                </ul>
 
-          <fieldset>
-            <Typography component="legend">Ratings Above</Typography>
-            <Slider
-              value={ratings}
-              onChange={ratingsHandler}
-              aria-labelledby="continuous-slider"
-              min={0}
-              max={5}
-              valueLabelDisplay="auto"
-            />
-          </fieldset>
-        </div>
-        }
-
-        <div className="flat-container">
-          <div className="cards">
-            {flats &&
-              flats.map((flat, i) => (
-                <div key={i} className="card">
-                  <h3>{flat.city}</h3>
-                  <div className='card-image'>
-                  {flat.images.length > 0 && (
-                      <img src={flat.images[0].url} alt="flat"  className='image' />
-                  )}
-                  </div>
-                  <Link className="flat-button" to={`/flat/${flat._id}`}>View</Link>
-                </div>
-              ))
+                <fieldset>
+                  <Typography component="legend">Ratings Above</Typography>
+                  <Slider
+                    value={ratings}
+                    onChange={ratingsHandler}
+                    aria-labelledby="continuous-slider"
+                    min={0}
+                    max={5}
+                    valueLabelDisplay="auto"
+                  />
+                </fieldset>
+              </div>
             }
-          </div>
-        </div>
-        {paginationVisible && (
-          <Pagination
-            count={Math.ceil(totalFlats / itemsInAPage)}
-            size="large"
-            page={currentPage}
-            variant="outlined"
-            shape="rounded"
-            onChange={setCurrentPageNumber}
-          />
-        )}
-        {/* <Pagination
+
+            <div className="flat-container">
+              <div className="cards">
+                {flats &&
+                  flats.map((flat, i) => (
+                    <div key={i} className="card">
+                      <h3>{flat.city}</h3>
+                      <div className='card-image'>
+                        {flat.images.length > 0 && (
+                          <img src={flat.images[0].url} alt="flat" className='image' />
+                        )}
+                      </div>
+                      <Link to={`/flat/${flat._id}`} className="flat-button">View</Link>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+            {paginationVisible && (
+              <Pagination
+                count={Math.ceil(totalFlats / itemsInAPage)}
+                size="large"
+                page={currentPage}
+                variant="outlined"
+                shape="rounded"
+                onChange={setCurrentPageNumber}
+              />
+            )}
+            {/* <Pagination
             count={Math.ceil(totalFlats / itemsInAPage)}
             size="large"
             page={currentPage}
@@ -139,9 +144,9 @@ const FlatHome = () => {
             shape="rounded"
             onChange={setCurrentPageNumber}
           /> */}
-      </section>
-    </div>
-    )}
+          </section>
+        </div>
+      )}
     </Fragment>
   )
 }

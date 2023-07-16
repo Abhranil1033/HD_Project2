@@ -4,17 +4,21 @@ class apiFeatures{
         this.queryStr = queryStr;
     }
 
-    search(){
-        const keyword = this.queryStr.keyword ? {
-            city : {
-                $regex : this.queryStr.keyword,
-                $options : "i"
-            },
-        } : {};
-
-        this.query = this.query.find({...keyword});
+    search() {
+        const keyword = this.queryStr.keyword
+            ? {
+                $or: [
+                    { city: { $regex: new RegExp(this.queryStr.keyword, "i") } },
+                    { proffession: { $regex: new RegExp(this.queryStr.keyword, "i") } }
+                ]
+            }
+            : {};
+    
+        this.query = this.query.find({ ...keyword });
         return this;
     }
+    
+
 
     filter(){
         const queryCopy = {...this.queryStr};

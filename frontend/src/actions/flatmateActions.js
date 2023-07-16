@@ -6,14 +6,14 @@ import {
     CLEAR_ERRORS
 } from "../constants/flatmateConstants";
 
-export const getFlatmates = (currentPage=1,category) => async(dispatch) =>{
+export const getFlatmates = (keyword="",currentPage=1,category) => async(dispatch) =>{
     try{
-        dispatch({type : ALL_FLATMATE_REQUEST});
-
-        const link = `api/v1/flatmates?page=${currentPage}}`;
-        if(category){
-            link = `/api/v1/products?page=${currentPage}&category=${category}`;
-        }
+        dispatch({ type: ALL_FLATMATE_REQUEST });
+  
+      let link = `/api/v1/flatmates?keyword=${keyword}&page=${currentPage}`;
+      if (category) {
+        link += `&category=${category}`;
+      }
 
         const {data} = await axios.get(link);
 

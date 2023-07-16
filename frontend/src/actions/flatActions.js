@@ -10,7 +10,7 @@ export const getFlats = (keyword = "", currentPage = 1, rent = [0, 125000], cate
     try {
       dispatch({ type: ALL_FLAT_REQUEST });
   
-      let link = `api/v1/flats?keyword=${keyword}&page=${currentPage}&rent[gte]=${rent[0]}&rent[lte]=${rent[1]}&ratings[gte]=${ratings}`;
+      let link = `/api/v1/flats?keyword=${keyword}&page=${currentPage}&rent[gte]=${rent[0]}&rent[lte]=${rent[1]}&ratings[gte]=${ratings}`;
       if (category) {
         link += `&category=${category}`;
       }
